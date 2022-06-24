@@ -1,12 +1,12 @@
 
 ## TAG 1
 
-**Schwerpunkte: Intro, Vorstellung, WordPress-Backups und erste Schritte bei WordPress-Absicherung **
+**Schwerpunkte: Intro, Vorstellung, WordPress-Backups und erste Schritte bei WordPress-Absicherung**
 
 *Vormittag / Früher Nachmittag:*
 - Kurze Vorstellungsrunde zum Kennenlernen
--   Allgemeine Fragerunde: Skills, Erwartungen, Anforderungen
--   Anmelden auf Test-WordPress Installation und erste SSH Verbindung auf dem Testserver
+- Allgemeine Fragerunde: Skills, Erwartungen, Anforderungen
+- Anmelden auf Test-WordPress Installation und erste SSH Verbindung auf dem Testserver
 - Einführung in WordPress Backups
 - Installation und Erklärungen des "Updraft Plus" Plugins
 - Installation und erste Konfiguration von "rsnapshot" auf dem Server 
@@ -28,8 +28,8 @@
 - verschiedene Optionen und Maßnahmen von iThemes Security direkt auf Serverebene einbauen
 - Deaktivierung bekannter Einfallstore (xmlrpc, PHP Ausführung in uploads etc.)
 - Klassische Angriffsvektoren in Serverprotokollen (Logs) ausmachen und verhindern
--   Fail2Ban als Logauswertung hinzuziehen zur Analyse und Aussperrung von IP-Adressen
--  Vorstellung des serverseitigen ISPProtect Malware Scanners
+- Fail2Ban als Logauswertung hinzuziehen zur Analyse und Aussperrung von IP-Adressen
+- Vorstellung des serverseitigen ISPProtect Malware Scanners
 - Schutz vor Denial-Of-Service-Attacken (DDOS) via Cloudflare-CDN
 - Security im Theme- und Plugin-Kontext: Escaping und Sanitizing der eigenen  Programmierung
 
