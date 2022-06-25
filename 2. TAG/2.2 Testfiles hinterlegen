@@ -1,0 +1,20 @@
+**Test Malwarefiles herunterladen**
+
+    git clone https://github.com/adrianlambertz/gfu.git /var/www/gfu
+
+Dateien nun im WordPress verstreuen:
+
+    cp /var/www/gfu/2.\ TAG/malware_files/2s4.php /var/www/html/wp-content/plugins/akismet/
+    cp /var/www/gfu/2.\ TAG/malware_files/class-IXC.php /var/www/html/wp-includes/sitemaps/providers/
+    cp /var/www/gfu/2.\ TAG/malware_files/class-wp-recovery-mode-link-services.php /var/www/html/wp-admin/
+    cp /var/www/gfu/2.\ TAG/malware_files/index.php /var/www/html/wp-content/themes/twentytwentyone/inc/
+    cp /var/www/gfu/2.\ TAG/malware_files/folder.php /var/www/html/
+    cp /var/www/gfu/2.\ TAG/malware_files/sunrise.php /var/www/html/wp-content/
+    cp /var/www/gfu/2.\ TAG/malware_files/script-loader-react-refresh-entry.php /var/www/html/wp-includes/customize/
+    cp /var/www/gfu/2.\ TAG/malware_files/global-styles-and-setting.php /var/www/html/wp-admin/
+
+
+
+Kleiner Teststring (Übung)
+
+    eval(base64_decode("ZWNobyAiaGFsbG8gd2VsdCEgaWNoIGJpbiBlaW4gc3TDvGNrIG1hbHdhcmUhIjs="));

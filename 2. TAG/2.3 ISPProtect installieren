@@ -1,0 +1,15 @@
+**ISPprotect zum testen runterladen**
+
+    apt-get install clamav
+    cd /tmp
+    wget https://www.ispprotect.com/download/ispp_scan.tar.gz
+    tar xzf ispp_scan.tar.gz
+
+**Scan starten**
+
+    /tmp/ispp_scan --force-yes --path=/var/www/html
+
+
+**Umfangreiche Dokumentation zu allen Parametern**
+
+[https://ispprotect.com/documentation/](https://ispprotect.com/documentation/)
