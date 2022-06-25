@@ -1,0 +1,86 @@
+
+_Jeder  **GREP**  oder  **FIND** Befehl setzt voraus, dass man sich in dem Ordner befindet, den man durchsuchen möchte!_
+
+### Per iTerm nach verschiedenen Mustern greppen:
+
+	grep -rn -l "eval" *
+
+	grep -rn -l "eval(" *
+
+	grep -rn -l "chr(" *
+
+	grep -rn -l "error_reporting(0)" *
+
+	grep -rn -l "base64_encode(gzdeflate(" *
+
+	grep -r -l base64_decode *
+
+	grep -rn -l "move_uploaded_file" *
+
+	grep -rn -l "echo(\"WordPress publishing software license\");" *
+
+**ACHTUNG: GREPPEN ist rechenintensiv! Also keine zu großen Ordner durchsuchen. Lieber vorfiltern (siehe „Befehle kombinieren“)**
+
+----------
+
+### Als sehr nützlich haben sich folgende Befehle erwiesen:
+
+#### Nach HEX Codes suchen
+
+_(die Zahl in den geschwungenen Klammern kann angepasst werden. Diese steht für die Aufeinanderfolge. Standardbefehl: 5 aufeinanderfolgende HEX Codes)_
+
+	grep -rP -l "(?:\\\\x[A-F0-9]{2}){5}" *
+
+#### Zuletzt angepasste PHP Dateien finden
+
+_-mtime steht für Anzahl Tage. -name kann auch angepasst werden zu .html, .js oder wonach man suchen will. Da PHP meist gehackt wird suchen wir hier nach PHP Dateien. -type f steht für  **FILES.** Man kann per -type  **d** auch nach Ordnern suchen._
+
+	find . -type f -name "*.php" -mtime -2
+
+----------
+
+### Befehle kombinieren
+
+	find . -type f -name "*.php" -mtime -2 | xargs grep -Pl "(?:\\\\x[A-F0-9]{2}){5}"
+
+_Der  **find** Befehl sucht erstmal nach vor 2 Tagen erstellten oder angepassten PHP Dateien und leitet per  **XARGS**  Befehl das Ergebnis weiter an den  **GREP** Befehl, der nach HEX Mustern sucht. Dieser Code kann auch so angepasst sein, dass alle PHP Dateien gesucht werden und diese dann auf  **base64_decode**  geprüft werden:_
+
+	find . -type f -name "*.php" | xargs grep -l "base64_decode"
+
+**Die Kombination aus FIND und GREP ist weit weniger rechenintensiv als das direkte GREPPEN in ganzen Ordnern.**
+
+### Dateien finden und direkt löschen 
+
+_Der Virenscanner (ISPPROTECT) markiert Dateien hin und wieder als befallen indem er der Datei die Dateiendung .suspected gibt. Diese Dateien kann man in einem Rutsch löschen:_
+
+	find . -type f -name "*.suspected" | xargs rm -f
+
+_So kann man auch z.B. Dateien mit der Endung „.php.“ oder „.php5“ oder „.php4“ direkt löschen (diese Dateiendungen parsed unser PHP eh nicht, daher können die weg. Hacker nutzen gerne diese Endung um Dateien noch etwas zu verschleiern)_
+
+	find . -type f -name "*.php5" | xargs rm -f
+
+----------
+
+### Dateirechte anpassen 
+
+#### Alle Dateien innerhalb eines Ordners (z.B. eines Hosts) auf 644 setzen:
+
+	find * -type f -print0 | xargs -0 -I {} chmod 0644 {}
+
+#### Alle Ordner innerhalb eines Ordners (z.B. eines Hosts) auf 755 setzen:
+
+	find * -type d -print0 | xargs -0 -I {} chmod 0755 {}
+
+----------
+
+### Alle CRONS aller User prüfen lassen:
+
+_Bis auf den ROOT und verschiedenen Daemon-Usern darf KEIN USER crontab nutzen. Das wurde auch abgeschaltet. Das kann man hin und wieder mal mit folgendem Befehl nachprüfen:_
+
+	for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
+
+Es wird nun jeder Aktive Crontab pro User ausgegeben. Bitte jeden einzelnen prüfen. Praktisch alle Benutzer (bis auf  _root_  z.B.) werden folgende Ausgabe erzeugen:
+
+**The user USER cannot use this program (crontab)**
+
+Diese Ausgabe ist genau das, was wir sehen möchten.
