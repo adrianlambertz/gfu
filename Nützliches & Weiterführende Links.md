@@ -13,6 +13,10 @@
 - [Dokumentation](https://cachify.pluginkollektiv.org/de/documentation/)
 
 
+**Scanner**
+
+- [WPSCAN](https://github.com/wpscanteam/wpscan)
+
 
 
 
