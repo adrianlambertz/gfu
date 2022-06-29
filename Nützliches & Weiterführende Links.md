@@ -19,6 +19,11 @@
 
 
 
+**WP CLI Revisionen**
+
+- [wp revisions](https://www.liquidweb.com/kb/delete-post-revisions-using-wp-cli/)
+
+
 
 
 ## Admin Zugriff auf IP Adressen beschränken
