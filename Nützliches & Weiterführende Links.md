@@ -54,3 +54,24 @@ https://www.fontsquirrel.com/
         }
     }
     add_action('admin_init', 'page_ip_restriction', 10);
+    
+    
+## Nonce zu wp-login.php hinzufügen
+    function add_login_nonce() {
+            wp_nonce_field('wp_login_nonce', 'wp_login_nonce_field');
+    }
+    add_action('lostpassword_form', 'add_login_nonce');
+
+
+
+    function validate_lost_password_nonce($true) {
+
+                if( !is_admin() ) {
+                    if ( ! isset( $_POST['wp_login_nonce_field'] )  || ! wp_verify_nonce( $_POST['wp_login_nonce_field'], 'wp_login_nonce' ) ) {
+                        return new WP_Error('denied', '<strong>ERROR</strong>: Bitte kontaktiere den Serveradministrator.');
+                    }
+                }
+            return $true;
+
+        }
+    add_action('allow_password_reset', 'validate_lost_password_nonce');
