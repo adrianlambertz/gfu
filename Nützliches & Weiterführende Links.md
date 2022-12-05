@@ -79,9 +79,9 @@ https://www.fontsquirrel.com/
 ## Fehlerhafte wp-ogin versuche alleine loggen
 
     function pix_log_failed_auth( $username ) {
-            $line = $_SERVER['REMOTE_ADDR'] . ' - - [' . date('d/M/Y:H:i:s O') . '] "' .$_SERVER['REQUEST_METHOD']. ' '.$_SERVER['REQUEST_URI'].' ' .$_SERVER['SERVER_PROTOCOL'].'" ' . http_response_code() . ' - Site: '. get_site_url() .' -  Username:  ' .>
-            $line .= "\n";
+        $line = $_SERVER['REMOTE_ADDR'] . ' - - [' . date('d/M/Y:H:i:s O') . '] "' .$_SERVER['REQUEST_METHOD']. ' '.$_SERVER['REQUEST_URI'].' ' .$_SERVER['SERVER_PROTOCOL'].'" ' . http_response_code() . ' - Site: '. get_site_url();
+        $line .= "\n";
 
-            error_log( $line, 3, "/var/www/wp-login.log" );
+        error_log( $line, 3, "/var/www/wp-login.log" );
     }
     add_action('wp_login_failed', 'pix_log_failed_auth');
