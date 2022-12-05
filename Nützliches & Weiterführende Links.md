@@ -16,6 +16,9 @@
 - [Website](https://cachify.pluginkollektiv.org/de/)
 - [Dokumentation](https://cachify.pluginkollektiv.org/de/documentation/)
 
+**Fontsquirrel**
+
+https://www.fontsquirrel.com/
 
 **Scanner**
 
