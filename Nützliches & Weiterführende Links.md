@@ -30,7 +30,9 @@ https://www.fontsquirrel.com/
 
 - [wp revisions](https://www.liquidweb.com/kb/delete-post-revisions-using-wp-cli/)
 
+**IMG optimizer**
 
+https://virtubox.github.io/img-optimize/
 
 
 ## Admin Zugriff auf IP Adressen beschränken
